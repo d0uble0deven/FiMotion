@@ -16,13 +16,16 @@
   export default {
     methods: {
         onSubmit() {
+            if (this.input.length === 0) {
+              return
+            }
             console.log('test value: ', this.input);   
             this.$emit('cards-searched', this.input);        
         }
   },
   data() {
     return {
-      test: "",
+        input: "",
     };
   },
 };

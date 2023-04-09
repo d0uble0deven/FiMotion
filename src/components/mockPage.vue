@@ -2,21 +2,29 @@
   <div id="card">
 
     <!-- {{ mockJSON }} -->
-    merchantName:  {{ merchantName }}
+    merchantName:  
+    {{ merchantName }}
     <br>
-    name:  {{ name }}
+    name:  
+    {{ name }}
     <br>
-    transactionType:  {{ transactionType }}
+    transactionType:  
+    {{ transactionType }}
     <br>
-    date:  {{ date }}
+    date:  
+    {{ date }}
     <br>
-    amount:  {{ amount }}
+    amount:  
+    {{ amount }}
     <br>
-    paymentChannel:  {{ paymentChannel }}
+    paymentChannel:  
+    {{ paymentChannel }}
     <br>
-    category:  {{ category }}
+    category:  
+    {{ category }}
     <br>
-    location:  {{ location }}
+    location:  
+    {{ location }}
 
     <!-- <ol v-for="item in mockJSON" :key="item">
     <li>

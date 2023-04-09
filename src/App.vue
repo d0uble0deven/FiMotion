@@ -1,6 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
    <h1>To-Do List</h1>
+   <h2>{{ MockData.length }} cards available</h2>
   <!-- <mockPage msg="Welcome to Your Vue.js App - mockPage"/> -->
   <to-do-form @todo-added="addToDo"></to-do-form>
   <searchMockPage @cards-searched="searchCards"></searchMockPage>
