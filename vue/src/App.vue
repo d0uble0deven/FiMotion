@@ -1,9 +1,8 @@
 <template>
   <PlaidLink
-      clientName="APPLICATION NAME"
+      clientName="FiMotion"
       env="sandbox"
-      link_token="GENERATED LINK TOKEN"
-      public_key="PLAID PUBLIC KEY"
+      public_key="dbaef5e48f1ccc027c209c029ef395"
       :products="['auth','transactions']"
       webhook="https://requestb.in"
       :onLoad='onLoad'
@@ -12,7 +11,7 @@
       :onEvent='onEvent'
       >
       <button>Open Link Slot</button>
-  </PlaidLink>,
+  </PlaidLink>
   <img alt="Vue logo" src="./assets/logo.png">
    <h1>To-Do List</h1>
    <h2>{{ MockData.length }} cards available</h2>
