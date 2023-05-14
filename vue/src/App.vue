@@ -1,5 +1,18 @@
 <template>
-  <button v-on:click="logIn">Log In</button>
+  <PlaidLink
+      clientName="APPLICATION NAME"
+      env="sandbox"
+      link_token="GENERATED LINK TOKEN"
+      public_key="PLAID PUBLIC KEY"
+      :products="['auth','transactions']"
+      webhook="https://requestb.in"
+      :onLoad='onLoad'
+      :onSuccess='onSuccess'
+      :onExit='onExit'
+      :onEvent='onEvent'
+      >
+      <button>Open Link Slot</button>
+  </PlaidLink>,
   <img alt="Vue logo" src="./assets/logo.png">
    <h1>To-Do List</h1>
    <h2>{{ MockData.length }} cards available</h2>
@@ -47,13 +60,16 @@ import searchMockPage from './components/searchMockPage.vue';
 
 import uniqueId from "lodash.uniqueid";
 
+import PlaidLink from 'vue-plaid-link2';
+
 export default {
   name: 'App',
   components: {
     ToDoForm,
     ToDoItem,
     searchMockPage,
-    mockPage
+    mockPage,
+    PlaidLink
   },
   data() {
     return {
@@ -209,12 +225,17 @@ export default {
       console.log("Cards searched - cardsName, MockData: ", cardsName, this.MockData);
       this.MockData = this.MockData.filter((e)=> e.name == cardsName);
     },
-    async logIn() {
-      console.log("logIn ");
-      // this.MockData = this.MockData.filter((e)=> e.name == cardsName);
-
-  
-    
+    onLoad() {
+      console.log('onLoad - args: ', ...arguments)
+    },
+    onSuccess(public_token, metadata) {
+      console.log('onSuccess - public_token, metadata: ', public_token, metadata)
+    },
+    onExit(err, metadata) {
+      console.log('onExit - err, metadata: ', err, metadata)
+    },
+    onEvent(eventName, metadata) {
+      console.log('onEvent - eventName, metadata: ', eventName, metadata)
     }
   }
 };
