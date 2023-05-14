@@ -1,4 +1,5 @@
 <template>
+  <button v-on:click="logIn">Log In</button>
   <img alt="Vue logo" src="./assets/logo.png">
    <h1>To-Do List</h1>
    <h2>{{ MockData.length }} cards available</h2>
@@ -207,8 +208,15 @@ export default {
     searchCards(cardsName) {
       console.log("Cards searched - cardsName, MockData: ", cardsName, this.MockData);
       this.MockData = this.MockData.filter((e)=> e.name == cardsName);
+    },
+    async logIn() {
+      console.log("logIn ");
+      // this.MockData = this.MockData.filter((e)=> e.name == cardsName);
+
+  
+    
     }
-  },
+  }
 };
 
 </script>
