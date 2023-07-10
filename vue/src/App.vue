@@ -1,10 +1,11 @@
 <template>
+  pl: {{ pl }}
   <PlaidLink
       clientName="FiMotion"
       env="sandbox"
       public_key="dbaef5e48f1ccc027c209c029ef395"
       :products="['auth','transactions']"
-      webhook="https://requestb.in"
+      webhook="http://localhost:3000/"
       :onLoad='onLoad'
       :onSuccess='onSuccess'
       :onExit='onExit'
@@ -60,6 +61,7 @@ import searchMockPage from './components/searchMockPage.vue';
 import uniqueId from "lodash.uniqueid";
 
 import PlaidLink from 'vue-plaid-link2';
+// import PlaidLink from '@/components/PlaidLink.vue'
 
 export default {
   name: 'App',
@@ -71,7 +73,10 @@ export default {
     PlaidLink
   },
   data() {
-    return {
+    console.log({ Plaid: window.Plaid })
+    return {   
+
+      pl: window.Plaid,
       ToDoItems:[
         { id: uniqueId("todo-"), label: "Learn Vue", done: false },
         {
@@ -229,6 +234,17 @@ export default {
     },
     onSuccess(public_token, metadata) {
       console.log('onSuccess - public_token, metadata: ', public_token, metadata)
+
+      const linkHandler = pl.create({
+  // token: (await axios.post('/create_link_token)).link_token'))
+    // Send the public_token to your app server.
+    
+    
+    axios.post('/exchange_public_token',{
+      public_token: public_token,
+    } )
+    
+  } )
     },
     onExit(err, metadata) {
       console.log('onExit - err, metadata: ', err, metadata)
