@@ -1,16 +1,5 @@
 <template>
-  <button @click="getPosts">Get posts</button>
-<ul>
-  {{ posts }}
-  <!-- <li v-for="post in posts" :key="post.id" data-test="post">
-    {{ post }}
-  </li> -->
-</ul>
-
-
   <div id="card">
-
-
 
     <!-- {{ mockJSON }} -->
     merchantName:  
@@ -49,7 +38,6 @@
 </template>
   
 <script>
-import axios from 'axios'
     
   export default {
     props: {
@@ -67,38 +55,9 @@ import axios from 'axios'
       // console.table(mockJSON)
         return{
           // mockJSONTemplate: mockJSON
-          plaidJSON: null
         }
-    },
-    methods: {
-    async getPosts() {
-      console.log('getPosts is running!')
-      this.plaidJSON = await axios.get('/api/transactions')
-      .then((res) => this.plaidJSON = res)
-      .then(() => console.log('plaidJSON recieved: ', this.plaidJSON.length, this.plaidJSON))
-      .then(() => console.log('plaidJSON[0]: ', this.plaidJSON[0]))
-  
-      // this.plaidJSON = this.plaidJSON.data
-      // this.plaidJSON = JSON.parse(JSON.stringify(this.plaidJSON.data))
-      // this.plaidJSON = JSON.stringify(this.plaidJSON.data)
-      // this.plaidJSON = JSON.parse(this.plaidJSON.data)
-      // console.log('plaidJSON recieved: ', this.plaidJSON.length, this.plaidJSON)
-      // console.log('plaidJSON[0]: ', this.plaidJSON[0])
-
-
-
-
-
-      // this.plaidJSON = await axios.get('https://jsonplaceholder.typicode.com/users')
-      // // this.plaidJSON = this.plaidJSON.data
-      // this.plaidJSON = JSON.parse(JSON.stringify(this.plaidJSON.data))
-      // // this.plaidJSON = JSON.stringify(this.plaidJSON.data)
-      // // this.plaidJSON = JSON.parse(this.plaidJSON.data)
-      // console.log('plaidJSON recieved: ', this.plaidJSON.length, this.plaidJSON)
-      // console.log('plaidJSON[0]: ', this.plaidJSON[0])
-
+        
     }
-  }
   };  
   
 </script>
